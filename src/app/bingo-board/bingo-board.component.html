@@ -1,0 +1,23 @@
+<div class="page">
+    <div class="page-title">
+        <span>RotGrind Bingo</span><br/>
+        <span style="font-size: 0.5em;">An unoffical Rotgrind bingo board</span>
+    </div>
+    <div class="board">
+        <ng-container *ngFor="let row of squares">
+            <ng-container *ngFor="let square of row">
+                <div class="board-square" [class.marked]="square.marked" (click)="markSquare(square)">
+                    <div class="content">
+                        {{square.text}}
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class="toolbar">
+        <div class="toolbar-inner">
+            <button (click)="onClickExport()">Share spoiler-free result!</button>
+            <span class="clipboard-message" *ngIf="copyToClipboard">Copied to clipboard!</span>
+        </div>
+    </div>
+</div>
