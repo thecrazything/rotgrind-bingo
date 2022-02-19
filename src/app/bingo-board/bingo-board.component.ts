@@ -13,6 +13,7 @@ export class BingoBoardComponent implements OnInit {
   squares!: Array<Array<BingoSquare>>;
   copyToClipboard = false;
   isBingo = false;
+  board?: BingoBoard;
 
   constructor(private bs: BoardService) {
     const boardJson = localStorage.getItem("rotgrind-board");
@@ -23,6 +24,7 @@ export class BingoBoardComponent implements OnInit {
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       if (diffDays <= 1) {
         this.squares = board.squares;
+        this.board = board;
       } else {
         this.newBoard();
       }
@@ -37,6 +39,7 @@ export class BingoBoardComponent implements OnInit {
   public markSquare(square: BingoSquare) {
     square.marked = !square.marked;
     this.isBingo = this.bs.checkBoard(this.squares);
+    localStorage.setItem("rotgrind-board", JSON.stringify(this.board));
   }
 
   public onClickExport() {
@@ -50,7 +53,7 @@ export class BingoBoardComponent implements OnInit {
 
   private newBoard(): void {
     this.squares = this.bs.createBoard();
-    const board = new BingoBoard(this.squares);
-    localStorage.setItem("rotgrind-board", JSON.stringify(board));
+    this.board = new BingoBoard(this.squares);
+    localStorage.setItem("rotgrind-board", JSON.stringify(this.board));
   }
 }

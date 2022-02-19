@@ -75,7 +75,24 @@ export default class BoardService {
             "Shopping spree",
             "Baldric screams WHAT",
             "Baldric Aquires Ingredient",
-            "We are denied a look under the helmet"
+            "We are denied a look under the helmet",
+            "Tannhauser is being creepy",
+            "But why's the rum gone?",
+            "Jeremy returns",
+            "Oncall encourages a bad idea",
+            "Friendly explodes",
+            "Bonfire rest",
+            "HOSTILE GM",
+            "Someone sings",
+            "I'LL DO IT AGAIN",
+            "Train drives by Earndil",
+            "Whole stream without any vehicles passing Earndil audibly",
+            "Someone audibly eats snacks",
+            "Graverobbery",
+            "Vaali is sober, and does not like it",
+            "The chainsaw car appears",
+            "Vaali appreciates Rehua",
+            "LORE"
         ].filter(x => exclude.indexOf(x) < 0);
         return texsts[this.getRandomInt(texsts.length)];
     }
